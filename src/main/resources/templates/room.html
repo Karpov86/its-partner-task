@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<html>
+<head>
+    <title>Create room</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="margin-top: 15%">
+    <form action="/room/save" method="post">
+        <div class="form-group-lg">
+            <label for="room-name">Room name</label>
+            <input class="form-control is-valid" id="room-name" name="name" required type="text"/>
+        </div>
+        <div class="form-group">
+            <label for="country-name">Country</label>
+            <select class="form-control" id="country-name" name="country">
+                <option>Austria</option>
+                <option>Belarus</option>
+                <option>Poland</option>
+                <option>Russia</option>
+                <option>Ukraine</option>
+                <option>England</option>
+                <option>France</option>
+                <option>Germany</option>
+                <option>China</option>
+                <option>Japan</option>
+                <option>India</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Save room</button>
+        <a class="btn btn-link" href="/room/roomList" role="button">To list of rooms</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/js/lamp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="container" style="margin-top: 15%; margin-left: 40%">
+    <form action="/room/switch" method="post">
+        <div th:switch="${lamp.getLampCondition()}">
+            <input hidden name="id" th:value="${lamp.getId()}"/>
+            <button class="btn btn-warning btn-lg" name="lampCondition" th:case="'on'" type="submit" value="off">Lamp is
+                on now
+            </button>
+            <button class="btn btn-secondary btn-lg" name="lampCondition" th:case="'off'" type="submit" value="on">Lamp
+                is off now
+            </button>
+            <p><a href="/room">To create room</a><br>
+                <a href="/room/roomList">To list of rooms</a>
+            </p>
+        </div>
+    </form>
+</div>
+</body>
+</html>
