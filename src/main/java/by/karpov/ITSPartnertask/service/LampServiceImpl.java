@@ -21,7 +21,7 @@ public class LampServiceImpl implements LampService<Lamp> {
 
     @Override
     public Lamp updateLampCondition(Lamp lamp, String condition) {
-        log.info("In RoomServiceImpl save{}{}", lamp, condition);
+        log.info("In RoomServiceImpl update{}{}", lamp, condition);
         lamp.setLampCondition(condition);
         return lampRepo.save(lamp);
     }
