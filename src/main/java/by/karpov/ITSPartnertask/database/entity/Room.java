@@ -1,9 +1,6 @@
 package by.karpov.ITSPartnertask.database.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -13,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 
 @Entity
 @Table(name = "rooms")
