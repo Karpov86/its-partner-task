@@ -41,7 +41,7 @@ public class RoomServiceTest {
         Room room = roomService.save(new Room("Test", "USA", new Lamp("off")));
         String result = room.getCountry() + ", " + room.getRoomName() + ", " + room.getLamp().getLampCondition();
         Assert.assertNotNull(room);
-        Assert.assertEquals("USA, Test, off", result );
+        Assert.assertEquals("USA, Test, off", result);
         roomService.delete(room);
     }
 

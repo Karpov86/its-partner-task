@@ -3,14 +3,14 @@ package by.karpov.ITSPartnertask.aspect;
 import by.karpov.ITSPartnertask.database.entity.Room;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -18,24 +18,16 @@ import java.util.stream.Collectors;
 @Component
 public class LoggingAspect {
 
-    /*@Pointcut("execution(* by.karpov.ITSPartnertask.service.RoomServiceImpl.*(..))")
-    public void callAtMyServicePublic(){}*/
-
     @Pointcut("execution(* by.karpov.ITSPartnertask.service.RoomServiceImpl.getAll())")
-    public void callAtMyServiceGetAll(){}
+    public void callAtMyServiceGetAll() {
+    }
 
     @Pointcut("execution(* by.karpov.ITSPartnertask.service.RoomServiceImpl.*(..))")
-    public void callAtMyServicePublic(){}
-
-    /*@Before("callAtMyServicePublic()")
-    public void logMethodCall(JoinPoint joinPoint){
-        String methodName = joinPoint.getSignature().getName();
-        //logger.log(Level.INFO, "method name:" + methodName);
-        log.info("method name: {}", methodName);
-    }*/
+    public void callAtMyServicePublic() {
+    }
 
     @Before("callAtMyServicePublic()")
-    public void beforeCallMethod(JoinPoint jp){
+    public void beforeCallMethod(JoinPoint jp) {
         String args = Arrays.stream(jp.getArgs())
                 .map(Object::toString)
                 .collect(Collectors.joining(","));
@@ -43,12 +35,12 @@ public class LoggingAspect {
     }
 
     @AfterReturning(pointcut = "callAtMyServicePublic()", returning = "result")
-    public void afterReturningCallAt(JoinPoint jp, Room result){
+    public void afterReturningCallAt(JoinPoint jp, Room result) {
         log.info("method name: {}, return value: {}", jp.getSignature().getName(), result);
     }
 
     @AfterReturning(pointcut = "callAtMyServiceGetAll()", returning = "list")
-    public void afterReturningCallAt(JoinPoint jp, List<Room> list){
+    public void afterReturningCallAt(JoinPoint jp, List<Room> list) {
         log.info("method name: {}, list size: {}", jp.getSignature().getName(), list.size());
     }
 

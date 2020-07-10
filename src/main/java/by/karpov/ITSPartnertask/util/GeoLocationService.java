@@ -19,19 +19,21 @@ import java.net.InetAddress;
 public class GeoLocationService {
     private static DatabaseReader reader = null;
     private ResourceLoader resourceLoader;
+
     @Autowired
     public GeoLocationService(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
+
     @PostConstruct
     public void init() throws IOException {
-            Resource resource = resourceLoader.getResource("classpath:GeoLite2-City.mmdb");
-            InputStream dbAsStream = resource.getInputStream();
-            // Initialize the reader
-            reader = new DatabaseReader
-                    .Builder(dbAsStream)
-                    .fileMode(Reader.FileMode.MEMORY)
-                    .build();
+        Resource resource = resourceLoader.getResource("classpath:GeoLite2-City.mmdb");
+        InputStream dbAsStream = resource.getInputStream();
+        // Initialize the reader
+        reader = new DatabaseReader
+                .Builder(dbAsStream)
+                .fileMode(Reader.FileMode.MEMORY)
+                .build();
     }
 
     public String findCountryNameByIp(String ip) throws IOException, GeoIp2Exception {
