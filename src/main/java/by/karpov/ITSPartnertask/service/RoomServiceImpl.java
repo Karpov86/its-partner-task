@@ -2,6 +2,7 @@ package by.karpov.ITSPartnertask.service;
 
 import by.karpov.ITSPartnertask.database.entity.Room;
 import by.karpov.ITSPartnertask.database.repository.RoomRepo;
+import by.karpov.ITSPartnertask.exception.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,8 +34,12 @@ public class RoomServiceImpl implements RoomService<Room> {
     }
 
     @Override
-    public Room findById(Long id) {
-        return roomRepo.findRoomById(id);
+    public Room findById(Long id) throws ValidationException {
+        Room room = roomRepo.findRoomById(id);
+        if (room == null) {
+            throw new ValidationException("Room not found!");
+        }
+        return room;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package by.karpov.ITSPartnertask;
 
 import by.karpov.ITSPartnertask.database.entity.Lamp;
+import by.karpov.ITSPartnertask.exception.ValidationException;
 import by.karpov.ITSPartnertask.service.LampServiceImpl;
 import by.karpov.ITSPartnertask.service.RoomServiceImpl;
 import org.junit.Assert;
@@ -22,7 +23,7 @@ public class LampServiceTest {
 
     @Test
     @Transactional
-    public void updateLampConditionTest() {
+    public void updateLampConditionTest() throws ValidationException {
         Lamp lamp = roomService.findById(1L).getLamp();
         String newCondition = "on";
         String exceptedCondition = "on";

@@ -2,6 +2,7 @@ package by.karpov.ITSPartnertask.controller;
 
 import by.karpov.ITSPartnertask.database.entity.Lamp;
 import by.karpov.ITSPartnertask.database.entity.Room;
+import by.karpov.ITSPartnertask.exception.ValidationException;
 import by.karpov.ITSPartnertask.service.LampServiceImpl;
 import by.karpov.ITSPartnertask.service.RoomServiceImpl;
 import by.karpov.ITSPartnertask.util.GeoLocationService;
@@ -53,7 +54,7 @@ public class RoomController {
     public String getRoomById(
             @PathVariable Long id,
             Model model
-    ) {
+    ) throws ValidationException {
         Room room = roomService.findById(id);
         Lamp lamp = room.getLamp();
         model.addAttribute("lamp", lamp);
@@ -64,7 +65,7 @@ public class RoomController {
     public String lampSwitcher(
             @RequestParam Long id,
             @RequestParam String lampCondition
-    ) {
+    ) throws ValidationException {
         Lamp lamp = roomService.findById(id).getLamp();
         lampService.updateLampCondition(lamp, lampCondition);
 
