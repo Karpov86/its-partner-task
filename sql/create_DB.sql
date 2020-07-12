@@ -1,3 +1,7 @@
+create database if not exists its_partner_task_db;
+
+use its_partner_task_db;
+
 create table lamps
 (
     id             bigint not null auto_increment,
