@@ -32,7 +32,7 @@ If you really want to use docker / docker-compose.
 - Clone a project from a 
 [github repository][2].
 - Open a project in IntelliJ IDEA
-- Create DB in MySQL with sql script [here](/sql)
+- Create DB in MySQL with sql script [here](/sql/create.sql)
 
 
 
