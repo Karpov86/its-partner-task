@@ -1,4 +1,4 @@
-#Web application "Rooms with light bulbs".
+# Web application "Rooms with light bulbs".
 
 ### Task solution for ITS Partner by [Karpov Valery][1].
 
@@ -17,7 +17,7 @@ A change in the status of the light should be displayed to
 all users in the room (as quickly as possible without 
 reloading the page)
 
-Login \ registration is not need.
+Login / registration is not need.
 
 **Implementation Requirements:**
 - Server side programming language - Java
@@ -29,7 +29,7 @@ single console command without installing third-party dependencies.
 
 If you really want to use docker / docker-compose.
 
-###Instruction to start.
+### Instruction to start.
 
 - Clone a project from a 
 [github repository][2].
