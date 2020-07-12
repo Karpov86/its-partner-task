@@ -21,7 +21,7 @@ public class RoomServiceTest {
 
     @Test
     @Transactional
-    void findByIdTest() {
+    public void findByIdTest() {
         Room room = roomService.findById(1L);
         Assert.assertNotNull(room);
         Assert.assertEquals("Belarus", room.getCountry());
@@ -29,7 +29,7 @@ public class RoomServiceTest {
 
     @Test
     @Transactional
-    void getAllTest() {
+    public void getAllTest() {
         List<Room> all = roomService.getAll();
         Assert.assertFalse(all.isEmpty());
         Assert.assertEquals(3, all.size());
@@ -37,7 +37,7 @@ public class RoomServiceTest {
 
     @Test
     @Transactional
-    void saveTest() {
+    public void saveTest() {
         Room room = roomService.save(new Room("Test", "USA", new Lamp("off")));
         String result = room.getCountry() + ", " + room.getRoomName() + ", " + room.getLamp().getLampCondition();
         Assert.assertNotNull(room);
