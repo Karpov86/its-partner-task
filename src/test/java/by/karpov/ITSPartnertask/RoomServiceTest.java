@@ -2,6 +2,7 @@ package by.karpov.ITSPartnertask;
 
 import by.karpov.ITSPartnertask.database.entity.Lamp;
 import by.karpov.ITSPartnertask.database.entity.Room;
+import by.karpov.ITSPartnertask.exception.ValidationException;
 import by.karpov.ITSPartnertask.service.RoomServiceImpl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ public class RoomServiceTest {
 
     @Test
     @Transactional
-    public void findByIdTest() {
+    public void findByIdTest() throws ValidationException {
         Room room = roomService.findById(1L);
         Assert.assertNotNull(room);
         Assert.assertEquals("Belarus", room.getCountry());
@@ -45,4 +46,12 @@ public class RoomServiceTest {
         roomService.delete(room);
     }
 
+    @Test
+    @Transactional
+    public void validationExceptionTest() {
+        Throwable thrown = Assert.assertThrows(ValidationException.class, () -> roomService.findById(5L));
+        String message = thrown.getMessage();
+        Assert.assertNotNull(message);
+        System.out.println(message);
+    }
 }
