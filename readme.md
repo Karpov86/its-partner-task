@@ -32,9 +32,10 @@ If you really want to use docker / docker-compose.
 - Clone a project from a 
 [github repository][2].
 - Open a project in IntelliJ IDEA
-- Create DB in MySQL with sql script [here](/sql/create.sql)
-
-
+- Create DB in MySQL (>v.8) with sql script [here](./sql)
+and you can population then.
+- Important! Don't forget change application properties.
+Set your user name and password for MySQL [here](/src/main/resources/application.properties).
 
 [1]: https://www.linkedin.com/in/valery-karpov/ "My LinkedIn page"
 [2]: https://github.com/Karpov86/its-partner-task.git "Repo with solution"
